@@ -1,1 +1,29 @@
 # Sundarbans_India
+
+# Sea Level Rise
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from datetime import datetime
+from scipy.stats import linregress
+
+
+# Load data
+file_path = "Desktop/SST/sst.csv"
+df = pd.read_csv(file_path)
+
+# Rename columns (if needed)
+df.columns = [col.strip() for col in df.columns]
+
+# Convert 'Date' to datetime
+df['Date'] = pd.to_datetime(df['Date'], format='%d-%m-%Y')
+
+# Extract 'Month' from date
+df['Month'] = df['Date'].dt.month
+
+# Sort by date
+df = df.sort_values('Date')
+
+# Preview
+print(df.head())
+
